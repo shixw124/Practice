@@ -1,0 +1,8 @@
+the commands that JDBC is connect to several databases:
+1：to MySql
+    "jdbc:mysql://localhost/bbs?user=root&password=shixw"
+2: to Oracle:
+    String url = "jdbc:oracle:" + "thin:@127.0.0.1:1521:XE";// 127.0.0.1 is the local address，XE is the name of database
+    String user = "system";// the database username
+    String password = "147";// password
+    con = DriverManager.getConnection(url, user, password);// get Connection and connect to the Oracle database!
