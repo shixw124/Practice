@@ -25,9 +25,26 @@ class B extends A{
     }
 }
 public class StaticTest {
+
+    static int x, y;
+
+    static {
+        int x = 5;
+    }
+
+    public static void myMethod() {
+        y = x++ + ++x;
+    }
+
     public static void main(String[] ars){
         A ab = new B();
         System.out.println();
         ab = new B();
+        System.out.println();
+
+        x--;
+        System.out.println(x);
+        myMethod();
+        System.out.println(" " + x + " " + y++ + " " + x);
     }
 }
