@@ -7,9 +7,14 @@ package com.changan.studyList;
 
 public class DoublyLinkedList implements List {
     int size;
+    /**
+     * head node
+     */
     DoublyNode head;
-    DoublyNode tail;
 
+    /**
+     * eatablish a empty two-way linked-list
+     */
     public DoublyLinkedList() {
         head = new DoublyNode();
         head.next = head;
@@ -36,17 +41,23 @@ public class DoublyLinkedList implements List {
         return node;
     }
 
-    private boolean add(Object value) {//默认在后面添加
+    /**
+     * default add operation
+     *
+     * @param value the value of node waiting be add
+     * @return is successfully added?
+     */
+    private boolean add(Object value) {
         addLast(value);
         return true;
     }
 
-        /**
-         * add the element before the aim element
-         *
-         * @param newNode new node
-         * @param node    aim node
-         */
+    /**
+     * add the element before the aim element
+     *
+     * @param newNode new node
+     * @param node    aim node
+     */
     private void addBefore(DoublyNode newNode, DoublyNode node) {
         newNode.next = node;
         newNode.pre = node.pre;
@@ -86,25 +97,54 @@ public class DoublyLinkedList implements List {
         size--;
     }
 
-    public boolean addFirst(Object value) {
+    /**
+     * add the node before the head node
+     *
+     * @param value new node's value
+     * @return boolean
+     */
+    private boolean addFirst(Object value) {
         addAfter(new DoublyNode(value), head);
         return true;
     }
 
-    public boolean addLast(Object value) {
+    /**
+     * add new node at the last
+     *
+     * @param value
+     * @return
+     */
+    private boolean addLast(Object value) {
         addBefore(new DoublyNode(value), head);
         return true;
     }
 
-    public void add(int index, Object value) {
+    /**
+     * add a new node at the specified location
+     *
+     * @param index specified location
+     * @param value node's value
+     */
+    private void add(int index, Object value) {
         addBefore(new DoublyNode(value), getNode(index));
     }
 
-    public Object getValue(int index) {
+    /**
+     * acquire the value of specified node
+     *
+     * @param index specified location
+     * @return
+     */
+    private Object getValue(int index) {
         return getNode(index).data;
     }
 
-    public void remove(int index) {
+    /**
+     * remove node at specified location
+     *
+     * @param index specified location
+     */
+    private void remove(int index) {
         try {
             removeNode(getNode(index));
         } catch (Exception e) {
@@ -112,7 +152,10 @@ public class DoublyLinkedList implements List {
         }
     }
 
-    public void removeFirst() {
+    /**
+     * remove the node next the head node
+     */
+    private void removeFirst() {
         try {
             removeNode(head.next);
         } catch (Exception e) {
@@ -120,7 +163,10 @@ public class DoublyLinkedList implements List {
         }
     }
 
-    public void removeLast() {
+    /**
+     * remove the tail node
+     */
+    private void removeLast() {
         try {
             removeNode(head.pre);
         } catch (Exception e) {
@@ -154,6 +200,10 @@ public class DoublyLinkedList implements List {
         return null;
     }
 
+    /**
+     * override the toString method
+     * @return
+     */
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         DoublyNode node = head;
