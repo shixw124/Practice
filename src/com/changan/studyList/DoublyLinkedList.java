@@ -19,6 +19,7 @@ public class DoublyLinkedList implements List {
         head = new DoublyNode();
         head.next = head;
         head.pre = head;
+        size = 0;
     }
 
     /**
